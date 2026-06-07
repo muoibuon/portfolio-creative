@@ -75,7 +75,7 @@ export default function AboutCourse() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h2 style={{ fontSize: 'clamp(1.2rem, 2.5vw, 2.2rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.8rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
               <TypeAnimation
                 sequence={["Xin chào! Mình là Trần Ngô Tiến Đạt", 99999]}
                 wrapper="span"
@@ -89,7 +89,7 @@ export default function AboutCourse() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              style={{ color: '#94a3b8', lineHeight: 1.65, marginBottom: '0.75rem', fontSize: '0.85rem', borderLeft: '2px solid rgba(6,182,212,0.4)', paddingLeft: '1rem' }}
+              style={{ color: '#94a3b8', lineHeight: 1.65, marginBottom: '0.75rem', fontSize: '1rem', borderLeft: '2px solid rgba(6,182,212,0.4)', paddingLeft: '1rem' }}
             >
               Mình là sinh viên Khoa học Máy tính tại Việt Nam, với nền tảng vững chắc về Tài chính
               Định lượng và Học máy. Mình đang tích cực chuẩn bị cho việc học sau đại học, hướng
@@ -102,7 +102,7 @@ export default function AboutCourse() {
               initial={{ opacity: 0, y: 14 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
-              style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '0.85rem', borderLeft: '2px solid rgba(124,58,237,0.4)', paddingLeft: '1rem' }}
+              style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1rem', borderLeft: '2px solid rgba(124,58,237,0.4)', paddingLeft: '1rem' }}
             >
               Mục tiêu của portfolio này: Để mọi người hiểu hơn về những kỹ năng mà mình có
               cũng như trình bày các sản phẩm trong môn Công nghệ Số.

@@ -42,6 +42,18 @@ export default function HologramBg() {
     });
 
     // ── Cybersigilism sigils ──────────────────────────────────
+    // ── Binary rain columns ──────────────────────────────────
+    const FONT_SIZE = 18;
+    const COLS = Math.floor(window.innerWidth / FONT_SIZE);
+    const binaryDrops = Array.from({ length: COLS }, () => ({
+      y: Math.random() * -50,
+      speed: 0.04 + Math.random() * 0.07,
+      opacity: 0.13 + Math.random() * 0.15,
+      length: 8 + Math.floor(Math.random() * 10),
+      bits: Array.from({ length: 16 }, () => Math.random() < 0.5 ? '0' : '1'),
+      flipTimer: 0,
+    }));
+
     const SIGIL_COUNT = 9;
     const sigils = Array.from({ length: SIGIL_COUNT }, (_, i) => ({
       x: (0.08 + (i % 3) * 0.42) * window.innerWidth  + (Math.random() - 0.5) * 80,
@@ -174,6 +186,14 @@ export default function HologramBg() {
         s.x = (0.08 + (i % 3) * 0.42) * canvas.width  + (Math.random() - 0.5) * 80;
         s.y = (0.12 + Math.floor(i / 3) * 0.38) * canvas.height + (Math.random() - 0.5) * 60;
       });
+      const newCols = Math.floor(canvas.width / FONT_SIZE);
+      if (newCols > binaryDrops.length) {
+        for (let i = binaryDrops.length; i < newCols; i++) {
+          binaryDrops.push({ y: Math.random() * -50, speed: 0.3 + Math.random() * 0.7, opacity: 0.04 + Math.random() * 0.08, length: 6 + Math.floor(Math.random() * 10), bits: Array.from({ length: 16 }, () => Math.random() < 0.5 ? '0' : '1'), flipTimer: 0 });
+        }
+      } else {
+        binaryDrops.length = newCols;
+      }
     };
     resize();
     window.addEventListener('resize', resize);
@@ -200,6 +220,36 @@ export default function HologramBg() {
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // ── Binary rain ────────────────────────────────────────
+      ctx.font = `${FONT_SIZE}px monospace`;
+      binaryDrops.forEach((drop, col) => {
+        drop.y += drop.speed;
+        drop.flipTimer++;
+        if (drop.flipTimer > 20 + Math.floor(Math.random() * 30)) {
+          const idx = Math.floor(Math.random() * drop.bits.length);
+          drop.bits[idx] = drop.bits[idx] === '0' ? '1' : '0';
+          drop.flipTimer = 0;
+        }
+        if (drop.y * FONT_SIZE > canvas.height + drop.length * FONT_SIZE) {
+          drop.y = -drop.length;
+          drop.speed = 0.3 + Math.random() * 0.7;
+        }
+        const x = col * FONT_SIZE;
+        for (let i = 0; i < drop.length; i++) {
+          const row = Math.floor(drop.y) - i;
+          if (row < 0) continue;
+          const fade = 1 - i / drop.length;
+          const alpha = drop.opacity * fade;
+          const bit = drop.bits[i % drop.bits.length];
+          // Head character slightly brighter
+          const a = i === 0 ? Math.min(alpha * 2.5, 0.55) : alpha;
+          ctx.fillStyle = i === 0
+            ? `rgba(103,232,249,${a.toFixed(3)})`
+            : `rgba(6,182,212,${a.toFixed(3)})`;
+          ctx.fillText(bit, x, row * FONT_SIZE);
+        }
+      });
 
       // ── Stars ──────────────────────────────────────────────
       stars.forEach(s => {
