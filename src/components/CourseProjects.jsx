@@ -125,12 +125,11 @@ function ProjectCard({ project, index }) {
           borderRadius: '16px 0 0 16px',
         }} />
 
-        {/* Number + icon */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
+        {/* Number */}
+        <div style={{ marginBottom: '0.4rem' }}>
           <span style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: project.color, opacity: 0.8 }}>
             {project.label.toUpperCase()}
           </span>
-          <span style={{ fontSize: '1.2rem' }}>{project.icon}</span>
         </div>
 
         {/* Title */}
