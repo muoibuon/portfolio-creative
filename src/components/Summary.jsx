@@ -230,8 +230,10 @@ export default function Summary() {
             transition={{ delay: 0.75, duration: 0.7 }}
             style={{
               margin: 0, padding: '0.9rem 1.5rem',
-              background: 'rgba(6,182,212,0.04)', backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(6,182,212,0.3)',
+              background: 'rgba(103,232,249,0.03)', backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(167,139,250,0.2)',
+              borderTop: '3px solid transparent',
+              borderImage: 'linear-gradient(90deg,#67e8f9,#a78bfa,#f0abfc) 1',
               borderRadius: 12,
             }}
           >
