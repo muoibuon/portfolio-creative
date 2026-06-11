@@ -170,9 +170,9 @@ export default function BaiTapDetail() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
           style={{ display: 'flex', justifyContent: 'center', marginTop: '0.5rem' }}>
           <a href={`/files/${bai.file}.pdf`} download
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 2rem', background: `rgba(${rgb},0.1)`, border: `1px solid rgba(${rgb},0.4)`, borderRadius: 50, color: bai.color, textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.04em', transition: 'all 0.25s ease' }}
-            onMouseEnter={e => { e.currentTarget.style.background = `rgba(${rgb},0.22)`; e.currentTarget.style.boxShadow = `0 0 30px rgba(${rgb},0.35)`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = `rgba(${rgb},0.1)`; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'none'; }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 2rem', background: `rgba(${rgb},0.28)`, border: `1.5px solid rgba(${rgb},0.85)`, borderRadius: 50, color: '#fff', textDecoration: 'none', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.04em', transition: 'all 0.25s ease', boxShadow: `0 0 18px rgba(${rgb},0.4)` }}
+            onMouseEnter={e => { e.currentTarget.style.background = `rgba(${rgb},0.48)`; e.currentTarget.style.boxShadow = `0 0 40px rgba(${rgb},0.7)`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = `rgba(${rgb},0.28)`; e.currentTarget.style.boxShadow = `0 0 18px rgba(${rgb},0.4)`; e.currentTarget.style.transform = 'none'; }}
           >↓ Tải file bài tập</a>
         </motion.div>
 
