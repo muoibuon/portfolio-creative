@@ -75,7 +75,7 @@ export default function AboutCourse() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.8rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+            <h2 style={{ fontSize: 'clamp(2rem, 3.75vw, 3.5rem)', fontWeight: 800, lineHeight: 1.2, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
               <TypeAnimation
                 sequence={["Xin chào! Mình là Trần Ngô Tiến Đạt", 99999]}
                 wrapper="span"
