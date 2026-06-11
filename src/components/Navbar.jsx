@@ -102,18 +102,12 @@ export default function Navbar() {
             <button
               data-hover
               onClick={() => {
-                const links = [
-                  { href: '/downloads/Portfolio_TranNgoTienDat_Web.pdf', name: 'Portfolio_TranNgoTienDat.pdf' },
-                  { href: '/downloads/portfolio-creative.zip',            name: 'portfolio-creative.zip' },
-                ];
-                links.forEach(({ href, name }) => {
-                  const a = document.createElement('a');
-                  a.href = href;
-                  a.download = name;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                });
+                const a = document.createElement('a');
+                a.href = '/downloads/MinhChung_TranNgoTienDat.zip';
+                a.download = 'MinhChung_TranNgoTienDat.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
               }}
               style={{
                 display: 'block',
@@ -186,13 +180,10 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setMenuOpen(false);
-                  [
-                    { href: '/downloads/Portfolio_TranNgoTienDat_Web.pdf', name: 'Portfolio_TranNgoTienDat.pdf' },
-                    { href: '/downloads/portfolio-creative.zip',            name: 'portfolio-creative.zip' },
-                  ].forEach(({ href, name }) => {
-                    const a = document.createElement('a'); a.href = href; a.download = name;
-                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                  });
+                  const a = document.createElement('a');
+                  a.href = '/downloads/MinhChung_TranNgoTienDat.zip';
+                  a.download = 'MinhChung_TranNgoTienDat.zip';
+                  document.body.appendChild(a); a.click(); document.body.removeChild(a);
                 }}
                 style={{ color: '#06b6d4', background: 'none', border: 'none', padding: '0.75rem 0', fontSize: '1rem', cursor: 'pointer', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
               >
