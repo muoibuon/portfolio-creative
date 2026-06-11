@@ -230,19 +230,19 @@ export default function Summary() {
             transition={{ delay: 0.75, duration: 0.7 }}
             style={{
               margin: 0, padding: '0.9rem 1.5rem',
-              background: 'rgba(16,185,129,0.04)', backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(16,185,129,0.15)', borderLeft: '3px solid #10b981',
-              borderRadius: '0 12px 12px 0',
+              background: 'rgba(6,182,212,0.04)', backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(6,182,212,0.3)',
+              borderRadius: 12,
             }}
           >
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#10b981', letterSpacing: '0.12em', marginBottom: '0.4rem', opacity: 0.8 }}>ỨNG DỤNG KỸ NĂNG VÀO TƯƠNG LAI</div>
-            <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(16,185,129,0.2)', fontFamily: 'Georgia, serif', marginBottom: '0.4rem' }}>"</div>
+            <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#06b6d4', letterSpacing: '0.12em', marginBottom: '0.4rem', opacity: 0.8 }}>ỨNG DỤNG KỸ NĂNG VÀO TƯƠNG LAI</div>
+            <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(6,182,212,0.2)', fontFamily: 'Georgia, serif', marginBottom: '0.4rem' }}>"</div>
             <p style={{ fontSize: 'clamp(0.78rem, 1.5vw, 0.95rem)', lineHeight: 1.75, fontWeight: 500, color: '#e2e8f0', fontStyle: 'italic' }}>
               <HolographicText delay={1.1}>
                 Nhìn lại hành trình qua môn Công nghệ Số, mình nhận ra rằng từng kỹ năng tích lũy không chỉ là bài nộp — chúng là nền móng thực sự cho con đường phía trước. Kỹ năng tổ chức tệp tin và quy tắc đặt tên khoa học sẽ trực tiếp phục vụ việc quản lý hàng nghìn file dataset và paper nghiên cứu khi mình theo đuổi chương trình MSc/PhD tại Đại học Toronto. Prompt Engineering và tư duy phản biện về AI sẽ là lợi thế cạnh tranh trong môi trường nghiên cứu Machine Learning quốc tế. Kinh nghiệm vận hành các kênh nội dung IT (TikTok 117K, YouTube 92K) kết hợp kỹ năng giao tiếp số từ môn học này sẽ giúp mình truyền tải nghiên cứu phức tạp thành nội dung dễ tiếp cận — năng lực mà giới học thuật hiện đại đang rất cần. Môn Công nghệ Số không dạy mình dùng phần mềm — nó dạy mình tư duy hệ thống trong môi trường số, và đó chính là thứ mình sẽ mang theo suốt sự nghiệp.
               </HolographicText>
             </p>
-            <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(16,185,129,0.2)', fontFamily: 'Georgia, serif', marginTop: '0.4rem', textAlign: 'right' }}>"</div>
+            <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(6,182,212,0.2)', fontFamily: 'Georgia, serif', marginTop: '0.4rem', textAlign: 'right' }}>"</div>
           </motion.blockquote>
 
         </div>
