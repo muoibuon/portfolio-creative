@@ -53,7 +53,7 @@ export default function HologramBg() {
     function spawnDrop(col) {
       const len   = 8 + Math.floor(Math.random() * 10);
       const vy0   = 1.8 + Math.random() * 2.0;
-      const baseA = 0.13 + Math.random() * 0.15;
+      const baseA = (0.13 + Math.random() * 0.15) * 0.5;
       for (let i = 0; i < len; i++) {
         rainParticles.push({
           x:     col * FONT_SIZE,
@@ -302,16 +302,17 @@ export default function HologramBg() {
           p.flipTimer = 0;
         }
 
-        // Draw — head brighter, pulled chars get a hue shift toward white
+        // Draw — dim to 5% when near cursor, normal otherwise
         const pullRatio = dist < BH_RADIUS ? 1 - dist / BH_RADIUS : 0;
-        const headAlpha = p.isHead ? Math.min(p.alpha * 2.5, 0.55) : p.alpha;
+        const dimAlpha = p.alpha * (1 - pullRatio) + 0.05 * pullRatio;
+        const headAlpha = p.isHead ? Math.min(dimAlpha * 2.5, 0.28) : dimAlpha;
         if (p.isHead) {
           const r = Math.round(103 + pullRatio * 152);
           const g = Math.round(232 + pullRatio * 23);
           const b = 249;
           ctx.fillStyle = `rgba(${r},${g},${b},${headAlpha.toFixed(3)})`;
         } else {
-          ctx.fillStyle = `rgba(6,182,212,${p.alpha.toFixed(3)})`;
+          ctx.fillStyle = `rgba(6,182,212,${dimAlpha.toFixed(3)})`;
         }
         ctx.fillText(p.char, p.x, p.y);
       }
