@@ -46,8 +46,8 @@ function ProgressChart({ isInView }) {
         TIẾN TRÌNH HỌC TẬP — 8 TUẦN
       </p>
       <div style={{
-        background: 'rgba(6,182,212,0.07)',
-        border: '1px solid rgba(6,182,212,0.22)',
+        background: 'rgba(6,182,212,0.21)',
+        border: '1px solid rgba(6,182,212,0.66)',
         borderRadius: 12,
         padding: '0.7rem 0.7rem 0.45rem',
       }}>
