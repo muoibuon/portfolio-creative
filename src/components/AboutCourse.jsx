@@ -4,124 +4,6 @@ import avatarImg from '../assets/avatar.png';
 import useTilt from '../hooks/useTilt';
 import { TypeAnimation } from 'react-type-animation';
 
-const SERIES = [
-  {
-    label: 'Tiến bộ kỹ thuật',
-    color: '#06b6d4',
-    data: [12, 22, 35, 48, 60, 72, 82, 91],
-  },
-  {
-    label: 'Khó khăn gặp phải',
-    color: '#f43f5e',
-    data: [85, 78, 83, 68, 56, 48, 38, 28],
-  },
-  {
-    label: 'Phát triển tư duy',
-    color: '#a78bfa',
-    data: [8, 13, 20, 32, 50, 66, 80, 93],
-  },
-];
-
-const W = 600, H = 160;
-const PL = 28, PR = 16, PT = 10, PB = 26;
-const cW = W - PL - PR, cH = H - PT - PB;
-const xS = i => PL + (i / 7) * cW;
-const yS = v => PT + cH - (v / 100) * cH;
-const toD = data => data.map((v, i) => `${i === 0 ? 'M' : 'L'}${xS(i).toFixed(1)},${yS(v).toFixed(1)}`).join(' ');
-
-function ProgressChart({ isInView }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: 0.75, duration: 0.55 }}
-      style={{ marginTop: '1.25rem' }}
-    >
-      <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(148,163,184,0.6)', marginBottom: '0.5rem' }}>
-        TIẾN TRÌNH HỌC TẬP — 8 TUẦN
-      </p>
-      <div style={{
-        background: 'rgba(255,255,255,0.02)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        borderRadius: 12,
-        padding: '0.75rem 0.75rem 0.5rem',
-      }}>
-        <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block', overflow: 'visible' }}>
-          {/* Horizontal grid */}
-          {[0, 25, 50, 75, 100].map(v => (
-            <g key={v}>
-              <line x1={PL} y1={yS(v)} x2={W - PR} y2={yS(v)} stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
-              <text x={PL - 4} y={yS(v) + 3.5} textAnchor="end" fill="rgba(148,163,184,0.4)" fontSize="8">{v}</text>
-            </g>
-          ))}
-          {/* Vertical grid */}
-          {[0,1,2,3,4,5,6,7].map(i => (
-            <line key={i} x1={xS(i)} y1={PT} x2={xS(i)} y2={PT + cH} stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
-          ))}
-          {/* X labels */}
-          {[0,1,2,3,4,5,6,7].map(i => (
-            <text key={i} x={xS(i)} y={H - 4} textAnchor="middle" fill="rgba(148,163,184,0.5)" fontSize="8.5">T{i + 1}</text>
-          ))}
-          {/* Lines */}
-          {SERIES.map((s, si) => (
-            <motion.path
-              key={s.label}
-              d={toD(s.data)}
-              fill="none"
-              stroke={s.color}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-              transition={{ delay: 0.9 + si * 0.25, duration: 1.4, ease: 'easeInOut' }}
-            />
-          ))}
-          {/* Glow under lines */}
-          {SERIES.map((s, si) => (
-            <motion.path
-              key={s.label + '-glow'}
-              d={toD(s.data)}
-              fill="none"
-              stroke={s.color}
-              strokeWidth="6"
-              strokeLinecap="round"
-              strokeOpacity="0.12"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
-              transition={{ delay: 0.9 + si * 0.25, duration: 1.4, ease: 'easeInOut' }}
-            />
-          ))}
-          {/* Dots */}
-          {SERIES.map((s, si) =>
-            s.data.map((v, i) => (
-              <motion.circle
-                key={`${s.label}-${i}`}
-                cx={xS(i)} cy={yS(v)} r="3.5"
-                fill={s.color}
-                style={{ filter: `drop-shadow(0 0 4px ${s.color})` }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: 1.1 + si * 0.25 + i * 0.06, duration: 0.25 }}
-              />
-            ))
-          )}
-        </svg>
-
-        {/* Legend */}
-        <div style={{ display: 'flex', gap: '1.4rem', justifyContent: 'center', marginTop: '0.3rem' }}>
-          {SERIES.map(s => (
-            <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <div style={{ width: 20, height: 2.5, background: s.color, borderRadius: 2, boxShadow: `0 0 6px ${s.color}80` }} />
-              <span style={{ fontSize: '0.65rem', color: '#94a3b8', letterSpacing: '0.04em' }}>{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function AboutCourse() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
@@ -132,11 +14,12 @@ export default function AboutCourse() {
       id="about-course"
       ref={ref}
       style={{
-        minHeight: '100vh',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
-        padding: '5rem 0 2rem',
+        padding: '5rem 0 1.5rem',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <div className="container">
@@ -259,9 +142,6 @@ export default function AboutCourse() {
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Chart — full width below grid */}
-        <ProgressChart isInView={isInView} />
       </div>
 
       <style>{`
