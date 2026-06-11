@@ -46,8 +46,8 @@ function ProgressChart({ isInView }) {
         TIẾN TRÌNH HỌC TẬP — 8 TUẦN
       </p>
       <div style={{
-        background: 'rgba(255,255,255,0.02)',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'rgba(6,182,212,0.07)',
+        border: '1px solid rgba(6,182,212,0.22)',
         borderRadius: 12,
         padding: '0.7rem 0.7rem 0.45rem',
       }}>
@@ -197,6 +197,9 @@ export default function Summary() {
             <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(124,58,237,0.2)', fontFamily: 'Georgia, serif' }}>"</div>
           </motion.blockquote>
 
+          {/* Chart */}
+          <ProgressChart isInView={isInView} />
+
           {/* Quote 3 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -221,8 +224,6 @@ export default function Summary() {
             <div style={{ fontSize: '2rem', lineHeight: 0.6, color: 'rgba(255,255,255,0.12)', fontFamily: 'Georgia, serif', marginTop: '0.4rem', textAlign: 'right' }}>"</div>
           </motion.div>
 
-          {/* Chart */}
-          <ProgressChart isInView={isInView} />
 
         </div>
 
