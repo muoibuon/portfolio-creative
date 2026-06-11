@@ -96,6 +96,52 @@ export default function Navbar() {
               </motion.div>
             );
           })}
+
+          {/* Minh chứng — tải PDF + ZIP */}
+          <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+            <button
+              data-hover
+              onClick={() => {
+                const links = [
+                  { href: '/downloads/Portfolio_TranNgoTienDat_Web.pdf', name: 'Portfolio_TranNgoTienDat.pdf' },
+                  { href: '/downloads/portfolio-creative.zip',            name: 'portfolio-creative.zip' },
+                ];
+                links.forEach(({ href, name }) => {
+                  const a = document.createElement('a');
+                  a.href = href;
+                  a.download = name;
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                });
+              }}
+              style={{
+                display: 'block',
+                color: '#06b6d4',
+                padding: '0.5rem 0.875rem',
+                borderRadius: 8,
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                background: 'rgba(6,182,212,0.1)',
+                border: '1px solid rgba(6,182,212,0.35)',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                letterSpacing: '0.02em',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(6,182,212,0.2)';
+                e.currentTarget.style.boxShadow = '0 0 16px rgba(6,182,212,0.3)';
+                e.currentTarget.style.color = '#67e8f9';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(6,182,212,0.1)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.color = '#06b6d4';
+              }}
+            >
+              ↓ Minh chứng
+            </button>
+          </motion.div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -137,6 +183,21 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  [
+                    { href: '/downloads/Portfolio_TranNgoTienDat_Web.pdf', name: 'Portfolio_TranNgoTienDat.pdf' },
+                    { href: '/downloads/portfolio-creative.zip',            name: 'portfolio-creative.zip' },
+                  ].forEach(({ href, name }) => {
+                    const a = document.createElement('a'); a.href = href; a.download = name;
+                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                  });
+                }}
+                style={{ color: '#06b6d4', background: 'none', border: 'none', padding: '0.75rem 0', fontSize: '1rem', cursor: 'pointer', textAlign: 'left', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+              >
+                ↓ Minh chứng
+              </button>
             </div>
           </motion.div>
         )}
