@@ -42,15 +42,13 @@ function ProgressChart({ isInView }) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: 0.85, duration: 0.55 }}
     >
-      <p style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.14em', color: 'rgba(148,163,184,0.55)', marginBottom: '0.45rem' }}>
-        TIẾN TRÌNH HỌC TẬP — 8 TUẦN
-      </p>
       <div style={{
-        background: 'rgba(6,182,212,0.21)',
-        border: '1px solid rgba(6,182,212,0.66)',
-        borderRadius: 12,
-        padding: '0.7rem 0.7rem 0.45rem',
+        margin: 0, padding: '0.9rem 1.5rem',
+        background: 'rgba(6,182,212,0.04)', backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(6,182,212,0.15)', borderLeft: '3px solid #06b6d4',
+        borderRadius: '0 12px 12px 0',
       }}>
+        <div style={{ fontSize: '0.65rem', fontWeight: 700, color: '#06b6d4', letterSpacing: '0.12em', marginBottom: '0.5rem', opacity: 0.8 }}>TIẾN TRÌNH HỌC TẬP — 8 TUẦN</div>
         <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block', overflow: 'visible' }}>
           {/* Horizontal grid */}
           {[0, 25, 50, 75, 100].map(v => (
