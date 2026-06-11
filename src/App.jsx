@@ -8,6 +8,7 @@ import AboutCourse from './components/AboutCourse';
 import CourseProjects from './components/CourseProjects';
 import Summary from './components/Summary';
 import CourseFooter from './components/CourseFooter';
+import BaiTapDetail from './components/BaiTapDetail';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,9 +25,10 @@ function Layout() {
       <ScrollToTop />
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Routes>
-          <Route path="/"          element={<AboutCourse />} />
-          <Route path="/du-an"     element={<CourseProjects />} />
-          <Route path="/loi-ket"   element={<Summary />} />
+          <Route path="/"              element={<AboutCourse />} />
+          <Route path="/du-an"         element={<CourseProjects />} />
+          <Route path="/loi-ket"       element={<Summary />} />
+          <Route path="/bai-tap/:id"   element={<BaiTapDetail />} />
         </Routes>
       </main>
       <CourseFooter />

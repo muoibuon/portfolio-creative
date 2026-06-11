@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import useTilt from '../hooks/useTilt';
 
 const projects = [
@@ -153,10 +154,9 @@ function ProjectCard({ project, index }) {
           </p>
         </div>
 
-        {/* Download button */}
-        <a
-          href={`/files/${project.file}.pdf`}
-          download
+        {/* Access button */}
+        <Link
+          to={`/bai-tap/${project.id}`}
           data-hover
           style={{
             display: 'inline-flex',
@@ -185,8 +185,8 @@ function ProjectCard({ project, index }) {
             e.currentTarget.style.transform = 'none';
           }}
         >
-          <span>↓</span> Tải file
-        </a>
+          <span>→</span> Truy cập bài tập
+        </Link>
       </div>
     </motion.div>
   );
