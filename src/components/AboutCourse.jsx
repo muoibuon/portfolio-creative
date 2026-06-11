@@ -104,8 +104,8 @@ export default function AboutCourse() {
                 borderBottom: '1px solid rgba(6,182,212,0.12)',
               }}>
                 <div>
-                  <p style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.12em', color: '#06b6d4', marginBottom: '0.3rem' }}>HỌC THUẬT & ĐỊNH HƯỚNG</p>
-                  <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.7rem', margin: 0 }}>
+                  <p style={{ fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.17em', color: '#06b6d4', marginBottom: '0.3rem' }}>HỌC THUẬT & ĐỊNH HƯỚNG</p>
+                  <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.19rem', letterSpacing: '0.05em', margin: 0 }}>
                     Sinh viên <span style={{ color: '#e2e8f0', fontWeight: 600 }}>Khoa học Máy tính</span> tại Việt Nam, với nền tảng vững chắc về{' '}
                     <span style={{ color: '#67e8f9' }}>Tài chính Định lượng</span> và{' '}
                     <span style={{ color: '#67e8f9' }}>Học máy</span>. Đang tích cực chuẩn bị cho học sau đại học, hướng tới chương trình{' '}
@@ -120,8 +120,8 @@ export default function AboutCourse() {
                 background: 'rgba(124,58,237,0.04)',
               }}>
                 <div>
-                  <p style={{ fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.12em', color: '#a78bfa', marginBottom: '0.3rem' }}>MỤC TIÊU PORTFOLIO</p>
-                  <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.7rem', margin: 0 }}>
+                  <p style={{ fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.17em', color: '#a78bfa', marginBottom: '0.3rem' }}>MỤC TIÊU PORTFOLIO</p>
+                  <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.19rem', letterSpacing: '0.05em', margin: 0 }}>
                     Để mọi người hiểu hơn về những <span style={{ color: '#e2e8f0', fontWeight: 600 }}>kỹ năng</span> mình có, cũng như trình bày các sản phẩm trong môn <span style={{ color: '#c4b5fd' }}>Công nghệ Số</span>.
                   </p>
                 </div>
