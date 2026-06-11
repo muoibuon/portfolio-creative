@@ -102,7 +102,7 @@ export default function AboutCourse() {
               <div style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(6,182,212,0.12)' }}>
                 <p style={{ fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.17em', color: '#06b6d4', marginBottom: '0.3rem' }}>HỌC THUẬT & ĐỊNH HƯỚNG</p>
                 <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.19rem', letterSpacing: '0.05em', margin: 0 }}>
-                  Mình là <span style={{ color: '#e2e8f0', fontWeight: 600 }}>Trần Ngô Tiến Đạt</span> — sinh viên <span style={{ color: '#67e8f9' }}>Khoa học Máy tính</span> tại <span style={{ color: '#e2e8f0', fontWeight: 600 }}>Đại học Việt Nhật (VJU)</span>, với nền tảng liên ngành vững chắc về <span style={{ color: '#67e8f9' }}>Tài chính Định lượng</span> và <span style={{ color: '#67e8f9' }}>Học máy</span>. Mình tiếp cận khoa học máy tính không chỉ như một ngành kỹ thuật thuần túy mà như một công cụ giải quyết bài toán thực tiễn — từ mô hình hóa tài chính đến xây dựng hệ thống AI có trách nhiệm. Định hướng dài hạn của mình là theo đuổi chương trình <span style={{ color: '#e2e8f0', fontWeight: 600 }}>MSc/PhD tại Đại học Toronto (UofT)</span>, nơi mình muốn đóng góp vào nghiên cứu về học máy ứng dụng và AI có đạo đức.
+                  Mình là <span style={{ color: '#e2e8f0', fontWeight: 600 }}>Trần Ngô Tiến Đạt</span> — sinh viên <span style={{ color: '#67e8f9' }}>Khoa học Máy tính</span> tại <span style={{ color: '#e2e8f0', fontWeight: 600 }}>Đại học Việt Nhật (VJU)</span>, với nền tảng liên ngành về <span style={{ color: '#67e8f9' }}>Tài chính Định lượng</span> và <span style={{ color: '#67e8f9' }}>Học máy</span>. Mình tiếp cận CS như công cụ giải quyết bài toán thực tiễn — từ mô hình hóa tài chính đến xây dựng hệ thống AI có trách nhiệm. Định hướng dài hạn là theo đuổi <span style={{ color: '#e2e8f0', fontWeight: 600 }}>MSc/PhD tại Đại học Toronto (UofT)</span> để nghiên cứu học máy ứng dụng và AI có đạo đức.
                 </p>
               </div>
 
@@ -110,7 +110,7 @@ export default function AboutCourse() {
               <div style={{ padding: '0.85rem 1.1rem', borderBottom: '1px solid rgba(124,58,237,0.1)', background: 'rgba(124,58,237,0.04)' }}>
                 <p style={{ fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.17em', color: '#a78bfa', marginBottom: '0.3rem' }}>ĐAM MÊ & THÀNH TỰU</p>
                 <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.19rem', letterSpacing: '0.05em', margin: 0 }}>
-                  Ngoài học thuật, mình là người đam mê <span style={{ color: '#c4b5fd', fontWeight: 600 }}>sáng tạo nội dung số</span> — đã xây dựng và vận hành thành công hai kênh TikTok về chủ đề IT (<span style={{ color: '#e2e8f0' }}>117K</span> và <span style={{ color: '#e2e8f0' }}>60K</span> followers) cùng một kênh YouTube Shorts (<span style={{ color: '#e2e8f0' }}>92K</span> followers), tất cả đều đã được mua lại thành công. Hành trình này rèn cho mình khả năng <span style={{ color: '#c4b5fd' }}>truyền đạt kiến thức kỹ thuật phức tạp</span> thành nội dung dễ tiếp cận — một kỹ năng mình tin sẽ trở thành lợi thế lớn trong sự nghiệp nghiên cứu và giảng dạy về sau.
+                  Ngoài học thuật, mình đam mê <span style={{ color: '#c4b5fd', fontWeight: 600 }}>sáng tạo nội dung số</span> — đã xây dựng hai kênh TikTok IT (<span style={{ color: '#e2e8f0' }}>117K</span> và <span style={{ color: '#e2e8f0' }}>60K</span> followers) và kênh YouTube Shorts (<span style={{ color: '#e2e8f0' }}>92K</span> followers), tất cả đã được mua lại thành công. Hành trình này rèn khả năng <span style={{ color: '#c4b5fd' }}>truyền đạt kiến thức kỹ thuật</span> thành nội dung dễ tiếp cận — lợi thế lớn cho sự nghiệp nghiên cứu về sau.
                 </p>
               </div>
 
@@ -118,7 +118,7 @@ export default function AboutCourse() {
               <div style={{ padding: '0.85rem 1.1rem' }}>
                 <p style={{ fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.17em', color: '#f0abfc', marginBottom: '0.3rem' }}>MỤC TIÊU PORTFOLIO</p>
                 <p style={{ color: '#94a3b8', lineHeight: 1.65, fontSize: '1.19rem', letterSpacing: '0.05em', margin: 0 }}>
-                  Portfolio này là bức tranh toàn diện về <span style={{ color: '#e2e8f0', fontWeight: 600 }}>hành trình học tập và phát triển</span> của mình trong môn <span style={{ color: '#f0abfc' }}>Công nghệ Số</span> — từ những kỹ năng số nền tảng cho đến tư duy hệ thống trong môi trường kỹ thuật số hiện đại. Mình muốn mọi người thấy không chỉ những gì mình <em>làm được</em>, mà còn cả cách mình <span style={{ color: '#e2e8f0', fontWeight: 600 }}>tư duy, học hỏi và trưởng thành</span> qua từng bài tập.
+                  Portfolio này là bức tranh về <span style={{ color: '#e2e8f0', fontWeight: 600 }}>hành trình học tập</span> của mình trong môn <span style={{ color: '#f0abfc' }}>Công nghệ Số</span> — từ kỹ năng số nền tảng đến tư duy hệ thống trong môi trường số hiện đại. Mình muốn mọi người thấy không chỉ những gì mình làm được, mà còn cách mình <span style={{ color: '#e2e8f0', fontWeight: 600 }}>tư duy và trưởng thành</span> qua từng bài tập.
                 </p>
               </div>
             </motion.div>
