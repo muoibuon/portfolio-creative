@@ -8,7 +8,7 @@ export default function HologramBg() {
     const ctx = canvas.getContext('2d');
     let animId;
     let t = 0;
-    const mouse = { x: -9999, y: -9999 };
+    const mouse = { x: -9999, y: -9999, active: false };
 
     const STAR_COUNT = 220;
     const GLOW_COUNT = 18;
@@ -41,18 +41,40 @@ export default function HologramBg() {
       };
     });
 
-    // ── Cybersigilism sigils ──────────────────────────────────
-    // ── Binary rain columns ──────────────────────────────────
+    // ── Binary rain — particle system ────────────────────────
     const FONT_SIZE = 18;
+    const BH_RADIUS = 200;   // black hole attraction radius (px)
+    const BH_GRAVITY = 0.55; // acceleration strength
+    const BH_ABSORB  = 28;   // distance at which char is absorbed
+    const MAX_SPEED  = 14;   // velocity cap
+
+    const rainParticles = [];
+
+    function spawnDrop(col) {
+      const len   = 8 + Math.floor(Math.random() * 10);
+      const vy0   = 1.8 + Math.random() * 2.0;
+      const baseA = 0.13 + Math.random() * 0.15;
+      for (let i = 0; i < len; i++) {
+        rainParticles.push({
+          x:     col * FONT_SIZE,
+          y:     -i * FONT_SIZE,
+          vx:    0,
+          vy:    vy0,
+          char:  Math.random() < 0.5 ? '0' : '1',
+          alpha: baseA * Math.pow(1 - i / len, 0.7),
+          isHead: i === 0,
+          absorbed: false,
+          absorbFlash: 0,
+          flipTimer: Math.floor(Math.random() * 40),
+        });
+      }
+    }
+
     const COLS = Math.floor(window.innerWidth / FONT_SIZE);
-    const binaryDrops = Array.from({ length: COLS }, () => ({
-      y: Math.random() * -50,
-      speed: 0.04 + Math.random() * 0.07,
-      opacity: 0.13 + Math.random() * 0.15,
-      length: 8 + Math.floor(Math.random() * 10),
-      bits: Array.from({ length: 16 }, () => Math.random() < 0.5 ? '0' : '1'),
-      flipTimer: 0,
-    }));
+    const colTimers = Array.from({ length: COLS }, () => Math.random() * 100);
+
+    // seed initial drops
+    for (let c = 0; c < COLS; c++) spawnDrop(c);
 
     const SIGIL_COUNT = 9;
     const sigils = Array.from({ length: SIGIL_COUNT }, (_, i) => ({
@@ -176,7 +198,10 @@ export default function HologramBg() {
     const onMouseMove = e => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
+      mouse.active = true;
     };
+    const onMouseLeave = () => { mouse.active = false; mouse.x = -9999; mouse.y = -9999; };
+    window.addEventListener('mouseleave', onMouseLeave);
     window.addEventListener('mousemove', onMouseMove);
 
     const resize = () => {
@@ -187,13 +212,8 @@ export default function HologramBg() {
         s.y = (0.12 + Math.floor(i / 3) * 0.38) * canvas.height + (Math.random() - 0.5) * 60;
       });
       const newCols = Math.floor(canvas.width / FONT_SIZE);
-      if (newCols > binaryDrops.length) {
-        for (let i = binaryDrops.length; i < newCols; i++) {
-          binaryDrops.push({ y: Math.random() * -50, speed: 0.3 + Math.random() * 0.7, opacity: 0.04 + Math.random() * 0.08, length: 6 + Math.floor(Math.random() * 10), bits: Array.from({ length: 16 }, () => Math.random() < 0.5 ? '0' : '1'), flipTimer: 0 });
-        }
-      } else {
-        binaryDrops.length = newCols;
-      }
+      colTimers.length = newCols;
+      for (let i = colTimers.length; i < newCols; i++) colTimers.push(Math.random() * 60);
     };
     resize();
     window.addEventListener('resize', resize);
@@ -221,35 +241,80 @@ export default function HologramBg() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // ── Binary rain ────────────────────────────────────────
+      // ── Binary rain — particle physics ────────────────────
       ctx.font = `${FONT_SIZE}px monospace`;
-      binaryDrops.forEach((drop, col) => {
-        drop.y += drop.speed;
-        drop.flipTimer++;
-        if (drop.flipTimer > 20 + Math.floor(Math.random() * 30)) {
-          const idx = Math.floor(Math.random() * drop.bits.length);
-          drop.bits[idx] = drop.bits[idx] === '0' ? '1' : '0';
-          drop.flipTimer = 0;
+
+      // Spawn new drops per column
+      for (let c = 0; c < colTimers.length; c++) {
+        colTimers[c]--;
+        if (colTimers[c] <= 0) {
+          spawnDrop(c);
+          colTimers[c] = 50 + Math.random() * 80;
         }
-        if (drop.y * FONT_SIZE > canvas.height + drop.length * FONT_SIZE) {
-          drop.y = -drop.length;
-          drop.speed = 0.3 + Math.random() * 0.7;
+      }
+
+      // Update & draw each particle
+      for (let i = rainParticles.length - 1; i >= 0; i--) {
+        const p = rainParticles[i];
+
+        if (p.absorbed) {
+          p.absorbFlash--;
+          if (p.absorbFlash <= 0) { rainParticles.splice(i, 1); continue; }
+          const fa = (p.absorbFlash / 10) * 0.9;
+          ctx.fillStyle = `rgba(200,255,255,${fa.toFixed(3)})`;
+          ctx.fillText(p.char, p.x, p.y);
+          continue;
         }
-        const x = col * FONT_SIZE;
-        for (let i = 0; i < drop.length; i++) {
-          const row = Math.floor(drop.y) - i;
-          if (row < 0) continue;
-          const fade = 1 - i / drop.length;
-          const alpha = drop.opacity * fade;
-          const bit = drop.bits[i % drop.bits.length];
-          // Head character slightly brighter
-          const a = i === 0 ? Math.min(alpha * 2.5, 0.55) : alpha;
-          ctx.fillStyle = i === 0
-            ? `rgba(103,232,249,${a.toFixed(3)})`
-            : `rgba(6,182,212,${a.toFixed(3)})`;
-          ctx.fillText(bit, x, row * FONT_SIZE);
+
+        // Remove if below screen
+        if (p.y > canvas.height + FONT_SIZE) { rainParticles.splice(i, 1); continue; }
+
+        // Black-hole gravity
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < BH_ABSORB) {
+          p.absorbed = true;
+          p.absorbFlash = 10;
+          continue;
         }
-      });
+
+        if (dist < BH_RADIUS && mouse.active) {
+          const f = BH_GRAVITY * (1 - dist / BH_RADIUS) * (BH_RADIUS / (dist + 10));
+          p.vx += (dx / dist) * f;
+          p.vy += (dy / dist) * f;
+          const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          if (spd > MAX_SPEED) { p.vx = p.vx / spd * MAX_SPEED; p.vy = p.vy / spd * MAX_SPEED; }
+        } else {
+          // Drift back toward vertical fall
+          p.vx *= 0.88;
+          p.vy  = p.vy * 0.96 + 2.0 * 0.04;
+        }
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Random bit flip
+        p.flipTimer++;
+        if (p.flipTimer > 25 + Math.floor(Math.random() * 35)) {
+          p.char = p.char === '0' ? '1' : '0';
+          p.flipTimer = 0;
+        }
+
+        // Draw — head brighter, pulled chars get a hue shift toward white
+        const pullRatio = dist < BH_RADIUS ? 1 - dist / BH_RADIUS : 0;
+        const headAlpha = p.isHead ? Math.min(p.alpha * 2.5, 0.55) : p.alpha;
+        if (p.isHead) {
+          const r = Math.round(103 + pullRatio * 152);
+          const g = Math.round(232 + pullRatio * 23);
+          const b = 249;
+          ctx.fillStyle = `rgba(${r},${g},${b},${headAlpha.toFixed(3)})`;
+        } else {
+          ctx.fillStyle = `rgba(6,182,212,${p.alpha.toFixed(3)})`;
+        }
+        ctx.fillText(p.char, p.x, p.y);
+      }
 
       // ── Stars ──────────────────────────────────────────────
       stars.forEach(s => {
@@ -329,6 +394,7 @@ export default function HologramBg() {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
       window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
 
